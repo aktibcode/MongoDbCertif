@@ -1,0 +1,9 @@
+Instructions pour Localisez la chaine de connexion MongoDB
+    1- Allez sur https://account.mongodb.com/account/login et connectez-vous à Atlas.
+    2- Une fois connecté, vous serez rédirigé vers le tableau de bord Atlas de votre projet.
+    3- Cliquez sur le bouton "Connect"
+    4- Cela devrait ouvrir une nouvelle fenêtre, qui affiche les options 
+       de connexion à votre cluster. Cliquez sur le Bouton "Connect your application"
+    5- Après avoir cliqué sur le bouton, vous serez redirigé vers une autre fenetre 
+    6- Cliquez sur l'icone "Copier" pour copier votre chaine de connexion
+    

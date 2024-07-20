@@ -1,0 +1,21 @@
+/*{    
+    "comment_title": Le Modele de document MongoDB,
+    "comment_subtitle": Structure du document
+},
+
+
+{
+    "key": value,
+    "key": value,
+    "key": value
+}
+*/
+
+
+{
+    "_id": 1,
+    "name": "AC3 Phone",
+    "colors": ["black", "silver"],
+    "price": 200,
+    "available": true
+}
