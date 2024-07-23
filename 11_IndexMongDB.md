@@ -1,9 +1,9 @@
-A- Index MongoDB \n
-    (Cours intéressant) \n
-    https://youtu.be/hL-UCOxfCq8 \n
-    https://rtavenar.github.io/mongo_book/content/00_intro.html \n
+A- Index MongoDB \\
+    (Cours intéressant) \\
+    https://youtu.be/hL-UCOxfCq8 \
+    https://rtavenar.github.io/mongo_book/content/00_intro.html \
 
-B- Création d'un index à Champ unique \n
+B- Création d'un index à Champ unique \
     https://youtu.be/qFN6qOuFUEI
 
     Consultez le code ci-dessous, qui montre comment créer un index de champ unique dans une collection.
