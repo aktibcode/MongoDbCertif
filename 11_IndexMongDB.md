@@ -1,21 +1,23 @@
-A- Index MongoDB \ \
+A- Index MongoDB \ 
     (Cours intéressant) \ 
     https://youtu.be/hL-UCOxfCq8 \
     https://rtavenar.github.io/mongo_book/content/00_intro.html \
 
-B- Création d'un index à Champ unique \ \
-    https://youtu.be/qFN6qOuFUEI
+B- Création d'un index à Champ unique \ 
+    https://youtu.be/qFN6qOuFUEI \
 
-    Consultez le code ci-dessous, qui montre comment créer un index de champ unique dans une collection.
+    Consultez le code ci-dessous, qui montre comment créer un index de champ unique dans une collection. \
 
-C- Créer un index à champ unique
-        Permet createIndex()de créer un nouvel index dans une collection. Entre les parenthèses de createIndex(), incluez un objet contenant le champ et l'ordre de tri.
+C- Créer un index à champ unique \
+        Permet createIndex()de créer un nouvel index dans une collection. Entre les parenthèses de createIndex(), incluez un objet contenant le champ et l'ordre de tri. \
 
             db.customers.createIndex({
-            birthdate: 1
-            })
-D- Créer un index unique à champ unique
-        Ajoutez {unique:true}un second paramètre facultatif dans createIndex() pour forcer l'unicité des valeurs des champs d'index. Une fois l'index unique créé, toutes les insertions ou mises à jour incluant des valeurs dupliquées dans la collection pour le ou les champs d'index échoueront.
+                birthdate: 1
+            }) 
+
+            \
+D- Créer un index unique à champ unique \
+        Ajoutez {unique:true}un second paramètre facultatif dans createIndex() pour forcer l'unicité des valeurs des champs d'index. Une fois l'index unique créé, toutes les insertions ou mises à jour incluant des valeurs dupliquées dans la collection pour le ou les champs d'index échoueront. \
 
         db.customers.createIndex({
             email: 1
@@ -23,21 +25,24 @@ D- Créer un index unique à champ unique
         {
             unique:true
         })
-    MongoDB crée l'index unique uniquement s'il n'y a pas de duplication dans les valeurs de champ pour le/les champ(s) d'index.
+        
+        \
+    MongoDB crée l'index unique uniquement s'il n'y a pas de duplication dans les valeurs de champ pour le/les champ(s) d'index. \
 
-E- Afficher les index utilisés dans une collection
-        Permet getIndexes() de voir tous les index créés dans une collection.
+E- Afficher les index utilisés dans une collection \
+        Permet getIndexes() de voir tous les index créés dans une collection. \
 
         db.customers.getIndexes()
     
-    *  Vérifier si un index est utilisé dans une requête
+        \
+    *  Vérifier si un index est utilisé dans une requête \
         Utiliser explain()dans une collection lors de l'exécution d'une requête pour voir le plan d'exécution. 
-        Ce plan fournit les détails des étapes d'exécution (IXSCAN, COLLSCAN, FETCH, SORT, etc.).
+        Ce plan fournit les détails des étapes d'exécution (IXSCAN, COLLSCAN, FETCH, SORT, etc.). \
 
-        - L' étape IXSCAN indique que la requête utilise un index et quel index est sélectionné.
-        - L' étape COLLSCAN indique qu'une analyse de collection est effectuée, sans utiliser d'index.
-        - L' étape FETCH indique que les documents sont en cours de lecture à partir de la collection.
-        - L' étape SORT indique que les documents sont triés en mémoire.
+        - L' étape IXSCAN indique que la requête utilise un index et quel index est sélectionné. \
+        - L' étape COLLSCAN indique qu'une analyse de collection est effectuée, sans utiliser d'index. \
+        - L' étape FETCH indique que les documents sont en cours de lecture à partir de la collection. \
+        - L' étape SORT indique que les documents sont triés en mémoire. \
 
         db.customers.explain().find({
             birthdate: {
@@ -52,13 +57,13 @@ E- Afficher les index utilisés dans une collection
             email:1
         })
 
+\
+F- Comprendre les index multi-clés \
 
-F- Comprendre les index multi-clés
+        https://youtu.be/Civ908Eav_A \
+    Consultez le code ci-dessous, qui montre comment fonctionnent les index multiclés. Si un champ unique ou un index composé inclut un champ de tableau, l'index est alors un index multiclé. \
 
-        https://youtu.be/Civ908Eav_A
-    Consultez le code ci-dessous, qui montre comment fonctionnent les index multiclés. Si un champ unique ou un index composé inclut un champ de tableau, l'index est alors un index multiclé.
-
-    *   Créer un index multi-clés à champ unique
+    *   Créer un index multi-clés à champ unique 
             Permet createIndex()de créer un nouvel index dans une collection. 
             Inclure un objet comme paramètre contenant le champ de tableau et l'ordre de tri. 
             Dans cet exemple, les comptes sont un champ de tableau.
