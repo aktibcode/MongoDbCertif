@@ -1,14 +1,19 @@
 A- Index MongoDB \ 
+
     (Cours intéressant)
+
     https://youtu.be/hL-UCOxfCq8
+
     https://rtavenar.github.io/mongo_book/content/00_intro.html
 
 B- Création d'un index à Champ unique \ 
+
     https://youtu.be/qFN6qOuFUEI 
 
     Consultez le code ci-dessous, qui montre comment créer un index de champ unique dans une collection. 
 
 C- Créer un index à champ unique \
+
         Permet createIndex()de créer un nouvel index dans une collection. Entre les parenthèses de createIndex(), incluez un objet contenant le champ et l'ordre de tri. 
 
             db.customers.createIndex({
@@ -17,6 +22,7 @@ C- Créer un index à champ unique \
 
             
 D- Créer un index unique à champ unique \
+
         Ajoutez {unique:true}un second paramètre facultatif dans createIndex() pour forcer l'unicité des valeurs des champs d'index. Une fois l'index unique créé, toutes les insertions ou mises à jour incluant des valeurs dupliquées dans la collection pour le ou les champs d'index échoueront. 
 
         db.customers.createIndex({
@@ -30,6 +36,7 @@ D- Créer un index unique à champ unique \
     MongoDB crée l'index unique uniquement s'il n'y a pas de duplication dans les valeurs de champ pour le/les champ(s) d'index. 
 
 E- Afficher les index utilisés dans une collection \
+
         Permet getIndexes() de voir tous les index créés dans une collection. 
 
         db.customers.getIndexes()
@@ -58,9 +65,10 @@ E- Afficher les index utilisés dans une collection \
         })
 
 
-F- Comprendre les index multi-clés \
+F- Comprendre les index multi-clés 
 
         https://youtu.be/Civ908Eav_A 
+        
     Consultez le code ci-dessous, qui montre comment fonctionnent les index multiclés. Si un champ unique ou un index composé inclut un champ de tableau, l'index est alors un index multiclé. 
 
     *   Créer un index multi-clés à champ unique 
