@@ -253,7 +253,9 @@ Q-  Supprimer les index
         ])
 
 Conclusion
+
     Index MongoDB
+    
         Dans cette compétence, nous avons appris ce que sont les index et comment ils améliorent les performances. 
         Nous avons examiné et créé différents index :
 
