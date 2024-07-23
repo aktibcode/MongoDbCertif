@@ -1,4 +1,4 @@
-A- Index MongoDB \ 
+A- Index MongoDB
 
     (Cours intéressant)
 
@@ -6,24 +6,27 @@ A- Index MongoDB \
 
     https://rtavenar.github.io/mongo_book/content/00_intro.html
 
-B- Création d'un index à Champ unique \ 
+B- Création d'un index à Champ unique 
 
     https://youtu.be/qFN6qOuFUEI 
 
     Consultez le code ci-dessous, qui montre comment créer un index de champ unique dans une collection. 
 
-C- Créer un index à champ unique \
+C- Créer un index à champ unique
 
-        Permet createIndex()de créer un nouvel index dans une collection. Entre les parenthèses de createIndex(), incluez un objet contenant le champ et l'ordre de tri. 
+        Permet createIndex()de créer un nouvel index dans une collection. Entre les parenthèses de createIndex(), 
+        incluez un objet contenant le champ et l'ordre de tri. 
 
             db.customers.createIndex({
                 birthdate: 1
             }) 
 
             
-D- Créer un index unique à champ unique \
+D- Créer un index unique à champ unique
 
-        Ajoutez {unique:true}un second paramètre facultatif dans createIndex() pour forcer l'unicité des valeurs des champs d'index. Une fois l'index unique créé, toutes les insertions ou mises à jour incluant des valeurs dupliquées dans la collection pour le ou les champs d'index échoueront. 
+        Ajoutez {unique:true} un second paramètre facultatif dans createIndex() pour forcer l'unicité des valeurs des champs d'index. 
+        Une fois l'index unique créé, toutes les insertions ou mises à jour incluant des valeurs dupliquées 
+        dans la collection pour le ou les champs d'index échoueront. 
 
         db.customers.createIndex({
             email: 1
@@ -35,14 +38,14 @@ D- Créer un index unique à champ unique \
         
     MongoDB crée l'index unique uniquement s'il n'y a pas de duplication dans les valeurs de champ pour le/les champ(s) d'index. 
 
-E- Afficher les index utilisés dans une collection \
+E- Afficher les index utilisés dans une collection
 
         Permet getIndexes() de voir tous les index créés dans une collection. 
 
         db.customers.getIndexes()
     
         
-    *  Vérifier si un index est utilisé dans une requête \
+    *  Vérifier si un index est utilisé dans une requête
         Utiliser explain()dans une collection lors de l'exécution d'une requête pour voir le plan d'exécution. 
         Ce plan fournit les détails des étapes d'exécution (IXSCAN, COLLSCAN, FETCH, SORT, etc.). 
 
@@ -68,8 +71,9 @@ E- Afficher les index utilisés dans une collection \
 F- Comprendre les index multi-clés 
 
         https://youtu.be/Civ908Eav_A 
-        
-    Consultez le code ci-dessous, qui montre comment fonctionnent les index multiclés. Si un champ unique ou un index composé inclut un champ de tableau, l'index est alors un index multiclé. 
+
+    Consultez le code ci-dessous, qui montre comment fonctionnent les index multiclés. 
+    Si un champ unique ou un index composé inclut un champ de tableau, l'index est alors un index multiclé. 
 
     *   Créer un index multi-clés à champ unique 
             Permet createIndex()de créer un nouvel index dans une collection. 
@@ -117,12 +121,15 @@ H-  Créer un index composé
 
 I-  Ordre des champs dans un index composé
 
-    L'ordre des champs est important lors de la création de l'index et de l'ordre de tri. Il est recommandé de répertorier les champs dans l'ordre suivant : Égalité, Tri et Plage.
+    L'ordre des champs est important lors de la création de l'index et de l'ordre de tri. 
+    Il est recommandé de répertorier les champs dans l'ordre suivant : Égalité, Tri et Plage.
 
     -   Égalité : champ(s) qui correspondent à une seule valeur de champ dans une requête
     -   Trier : champ(s) qui ordonnent les résultats dans une requête
     -   Plage : champ(s) que la requête filtre dans une plage de valeurs valides
-    La requête suivante inclut une correspondance d'égalité sur le champ actif, un tri sur l'anniversaire (décroissant) et le nom (croissant), ainsi qu'une requête de plage sur l'anniversaire également.
+
+    La requête suivante inclut une correspondance d'égalité sur le champ actif, un tri sur l'anniversaire (décroissant) 
+    et le nom (croissant), ainsi qu'une requête de plage sur l'anniversaire également.
 
         db.customers.find({
             birthdate: {
@@ -148,7 +155,8 @@ I-  Ordre des champs dans un index composé
 
 J-  Vérifier si un index est utilisé dans une requête
 
-    Utilisez la fonction describe() dans une collection lors de l'exécution d'une requête pour voir le plan d'exécution. Ce plan fournit les détails des étapes d'exécution (IXSCAN, COLLSCAN, FETCH, SORT, etc.). En voici quelques exemples :
+    Utilisez la fonction describe() dans une collection lors de l'exécution d'une requête pour voir le plan d'exécution. 
+    Ce plan fournit les détails des étapes d'exécution (IXSCAN, COLLSCAN, FETCH, SORT, etc.). En voici quelques exemples :
 
     -   L' étape IXSCAN indique que la requête utilise un index et quel index est sélectionné.
     -   L' étape COLLSCAN indique qu'une analyse de collection est effectuée, sans utiliser d'index.
@@ -167,11 +175,15 @@ J-  Vérifier si un index est utilisé dans une requête
 
 K-  Couvrir une requête par l'index
 
-    Un index couvre une requête lorsque MongoDB n'a pas besoin de récupérer les données de la mémoire puisque toutes les données requises sont déjà renvoyées par l'index.
+    Un index couvre une requête lorsque MongoDB n'a pas besoin de récupérer les données de la mémoire puisque 
+    toutes les données requises sont déjà renvoyées par l'index.
 
-    Dans la plupart des cas, nous pouvons utiliser des projections pour renvoyer uniquement les champs requis et couvrir la requête. Assurez-vous que les champs de la projection se trouvent dans l'index.
+    Dans la plupart des cas, nous pouvons utiliser des projections pour renvoyer uniquement les champs requis 
+    et couvrir la requête. Assurez-vous que les champs de la projection se trouvent dans l'index.
 
-    En ajoutant la projection {name:1,birthdate:1,_id:0} dans la requête précédente, nous pouvons limiter les champs renvoyés au nom et à la date de naissance uniquement. Ces champs font partie de l'index et lorsque nous exécutons la commande explanation(), le plan d'exécution ne montre que deux étapes :
+    En ajoutant la projection {name:1,birthdate:1,_id:0} dans la requête précédente, nous pouvons limiter 
+    les champs renvoyés au nom et à la date de naissance uniquement. Ces champs font partie de l'index 
+    et lorsque nous exécutons la commande explanation(), le plan d'exécution ne montre que deux étapes :
 
     -   IXSCAN - Analyse d'index à l'aide de l'index composé
     -   PROJECTION_COVERED - Toutes les informations nécessaires sont renvoyées par l'index, pas besoin de les récupérer en mémoire
@@ -202,13 +214,16 @@ L-  Suppression d'un index
 
 M-  Afficher les index utilisés dans une collection
 
-    Utilisez getIndexes() pour voir tous les index créés dans une collection. Il existe toujours un index par défaut dans chaque collection sur le champ _id. Cet index est utilisé par MongoDB en interne et ne peut pas être supprimé.
+    Utilisez getIndexes() pour voir tous les index créés dans une collection. Il existe toujours 
+    un index par défaut dans chaque collection sur le champ _id. Cet index est utilisé par MongoDB 
+    en interne et ne peut pas être supprimé.
 
         db.customers.getIndexes()
 
 N-  Supprimer un index
 
-    Permet dropIndex()de supprimer un index existant d'une collection. Dans les parenthèses de dropIndex(), incluez un objet représentant la clé d'index ou indiquez le nom de l'index sous forme de chaîne. 
+    Permet dropIndex()de supprimer un index existant d'une collection. Dans les parenthèses de dropIndex(), 
+    incluez un objet représentant la clé d'index ou indiquez le nom de l'index sous forme de chaîne. 
 
 O-  Supprimer l'index par nom :
         
@@ -230,7 +245,8 @@ Q-  Supprimer les index
 
         db.customers.dropIndexes()
 
-    La commande dropIndexes() peut également accepter un tableau de noms d'index comme paramètre pour supprimer une liste spécifique d'index.
+    La commande dropIndexes() peut également accepter un tableau de noms d'index comme paramètre 
+    pour supprimer une liste spécifique d'index.
 
         db.collection.dropIndexes([
             'index1name', 'index2name', 'index3name'
@@ -238,17 +254,20 @@ Q-  Supprimer les index
 
 Conclusion
     Index MongoDB
-        Dans cette compétence, nous avons appris ce que sont les index et comment ils améliorent les performances. Nous avons examiné et créé différents index :
+        Dans cette compétence, nous avons appris ce que sont les index et comment ils améliorent les performances. 
+        Nous avons examiné et créé différents index :
 
         Champ unique (un champ)
         Composé (2 à 32 champs)
-    Nous avons travaillé avec des propriétés d’index telles que unique et avons compris que les index multiclés sont des index qui incluent un champ de tableau.
+    Nous avons travaillé avec des propriétés d’index telles que unique et avons compris que les index multiclés 
+    sont des index qui incluent un champ de tableau.
     
     Nous avons utilisé les commandes suivantes dans la collection pour créer ou supprimer des index :
 
         -   créerIndex()
         -   dropIndex()
-    Enfin, nous avons appris comment afficher les index utilisés dans une collection avec la commande getIndexes() et comment vérifier si l'index est utilisé dans une requête en exécutant la commande explicit().
+    Enfin, nous avons appris comment afficher les index utilisés dans une collection avec la commande getIndexes() 
+    et comment vérifier si l'index est utilisé dans une requête en exécutant la commande explicit().
 
-    https://youtu.be/Nd4t_dCti4g
+        https://youtu.be/Nd4t_dCti4g
 
