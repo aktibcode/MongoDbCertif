@@ -40,7 +40,9 @@
 
 5-  Annuler une transaction
 
-    Si vous vous trouvez dans une situation qui nécessite d'annuler des opérations de base de données avant la fin d'une transaction, vous pouvez interrompre la transaction. Cela ramènera la base de données à son état d'origine, avant le lancement de la transaction.
+    Si vous vous trouvez dans une situation qui nécessite d'annuler des opérations de base de données 
+    avant la fin d'une transaction, vous pouvez interrompre la transaction. Cela ramènera la base de 
+    données à son état d'origine, avant le lancement de la transaction.
 
     -   Annuler une transaction : code vidéo
 
@@ -63,4 +65,8 @@ Conclusion
 
 Transactions MongoDB
 
-    Dans cette compétence, vous avez appris que les transactions ACID garantissent que les opérations de base de données, telles que le transfert de fonds d'un compte à un autre, se produisent ensemble ou pas du tout. Vous avez également exploré le fonctionnement des transactions ACID avec le modèle de document dans MongoDB. Enfin, vous avez appris à créer et à utiliser des transactions multi-documents à l'aide des commandes startTransaction() et commitTransaction(), et à annuler des transactions multi-documents à l'aide de la commande abortTransaction().
+    Dans cette compétence, vous avez appris que les transactions ACID garantissent que les opérations
+    de base de données, telles que le transfert de fonds d'un compte à un autre, se produisent ensemble ou pas du tout. 
+    Vous avez également exploré le fonctionnement des transactions ACID avec le modèle de document dans MongoDB. 
+    Enfin, vous avez appris à créer et à utiliser des transactions multi-documents à l'aide des commandes startTransaction() 
+    et commitTransaction(), et à annuler des transactions multi-documents à l'aide de la commande abortTransaction().
