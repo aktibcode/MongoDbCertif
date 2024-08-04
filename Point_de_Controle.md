@@ -1,9 +1,9 @@
-A-  Ce que vous visez
+# A-  Ce que vous visez
 
-    Dans ce point de contrôle, l'idée principale est de 
+    Dans ce point de contrôle, l'idée principale est de
     manipuler les opérations CRUD de MongoDB
 
-        *   Créer une base de données appelée « contact »
+    *   Créer une base de données appelée « contact »
         *   Créer une collection appelée « liste de contacts »
         *   Insérer ces documents dans la "liste de contacts" :
                 *   Nom : Ben, Prénom : Moris, Email : ben@gmail.com, âge : 26 ans
@@ -12,7 +12,7 @@ A-  Ce que vous visez
                 *   Nom : Alex, Prénom : brown, âge : 4 ans
                 *   Nom : Denzel, Prénom : Washington, âge : 3 ans
 
-B-  Instructions
+# B-  Instructions
 
     -   Afficher toute la liste des contacts.
             *   Afficher toutes les informations concernant une seule personne en utilisant son identifiant.
